@@ -18,10 +18,8 @@ import (
 
  */
 func main() {
-	//s1 := readBinaryWatch(1)
-	//fmt.Println(s1)
-	i := 1
-	fmt.Printf("i = %09d", i)
+	s1 := readBinaryWatch(1)
+	fmt.Println(s1)
 }
 
 /**
