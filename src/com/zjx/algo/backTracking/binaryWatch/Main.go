@@ -13,13 +13,20 @@ import (
 	给定一个非负整数 n 代表当前 LED 亮着的数量，返回所有可能的时间。
 
 	solution:
+	无关痛痒
 
 
  */
 func main() {
-	s1 := readBinaryWatch(11)
-	fmt.Println(s1)
+	//s1 := readBinaryWatch(1)
+	//fmt.Println(s1)
+	i := 1
+	fmt.Printf("i = %09d", i)
 }
+
+/**
+
+ */
 
 func readBinaryWatch(num int) []string {
 	var res []string
