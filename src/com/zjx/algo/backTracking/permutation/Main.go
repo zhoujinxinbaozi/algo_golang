@@ -23,7 +23,7 @@ import (
 	无关痛痒
  */
 func main() {
-	str := "a1b2"
+	str := "a1B2"
 	var slice []string
 	slice = make([]string, 0)
 	var target string
@@ -31,8 +31,9 @@ func main() {
 	slice = removeReplicaSliceString(slice)
 	fmt.Println(slice)
 }
-
-// 去除slice中的重复项
+/*
+	去除slice中的重复项
+ */
 func removeReplicaSliceString(slice []string) []string {
 	m1 := make(map[string]string, 10)
 	result := make([]string, 0)
@@ -47,7 +48,9 @@ func removeReplicaSliceString(slice []string) []string {
 	return result
 }
 
-// 回溯算法
+/*
+	递归函数
+ */
 func solution(str string, slice *[]string, count int, target string, start int) {
 	if start == len(str) - 1 {
 		*slice = append(*slice, target)
@@ -60,7 +63,11 @@ func solution(str string, slice *[]string, count int, target string, start int) 
 		//fmt.Println("before dg : ", target)
 		solution(str, slice, count+1, target, start+1)
 		target = target[0 : len(target)-1]
-		target = target + string(unicode.ToUpper(rune(str[start])))
+		if unicode.IsUpper(rune(str[start])){
+			target = target + string(unicode.ToLower(rune(str[start])))
+		}else{
+			target = target + string(unicode.ToUpper(rune(str[start])))
+		}
 		//fmt.Println("after dg : ", target)
 		solution(str, slice, count+1, target, start+1)
 		target = target[0 : len(target)-1]
