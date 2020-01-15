@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	//testTypeSpace()
-	fmt.Println(testDefer())
+	testTypeSpace()
+	//fmt.Println(testDefer())
 }
 /*
 	测试defer的执行时机，return 返回并不是原子性的，分两步：
