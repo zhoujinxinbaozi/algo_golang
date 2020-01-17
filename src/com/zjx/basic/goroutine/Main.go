@@ -10,7 +10,7 @@ var wg sync.WaitGroup
 
 func main() {
 	runtime.GOMAXPROCS(2) // 设置单核只有一个cpu干活，要么执行完f1，在执行f2，
-	// 不止一个的时候才会出现并发的场景
+	                         // 不止一个的时候才会出现并发的场景
 	wg.Add(2)
 	go f1()
 	go f2()
