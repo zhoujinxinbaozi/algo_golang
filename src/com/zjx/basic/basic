@@ -1,0 +1,1 @@
+sync.Once 确保某个操作只执行一次  Do(func(){})

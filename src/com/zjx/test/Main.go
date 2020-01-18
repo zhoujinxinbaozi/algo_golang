@@ -2,10 +2,14 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"unsafe"
 )
+var wg sync.Once
+
 
 func main() {
+	wg.Do()
 	testTypeSpace()
 	//fmt.Println(testDefer())
 }
