@@ -1,1 +1,2 @@
 sync.Once 确保某个操作只执行一次  Do(func(){})
+sync.Map  并发安全的map  不需要初始化 store：存储值  load：读取值 delete：删除 range：遍历
