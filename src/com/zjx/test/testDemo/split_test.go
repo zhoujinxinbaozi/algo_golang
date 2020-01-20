@@ -2,15 +2,14 @@
 package testDemo
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 )
-// 函数名为 Test+函数名  参数为 t *testing.T
+// 函数名为 Test开头  参数为 t *testing.T
 func TestSplit(t *testing.T) {
 	got := Split("abchdbdd", "b")
 	want := []string{"a", "chd", "dd"}
 	if !reflect.DeepEqual(got, want) {
-		fmt.Printf("want:%#v, but got:%#v\n", want, got)
+		t.Errorf("want:%#v, but got:%#v\n", want, got)
 	}
 }
