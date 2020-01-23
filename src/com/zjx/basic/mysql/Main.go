@@ -68,7 +68,7 @@ func query(){
 }
 // 插入，删除，修改
 func insert(){
-	sql := "insert into student values(\"姚依林3\",25);"
+	sql := "insert into student values(\"姚依林4\",25);"
 	n, err2 := db.Exec(sql)
 	if err2 != nil{
 		fmt.Println(err2)
