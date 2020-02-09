@@ -26,6 +26,7 @@ func judgeMax(x, y int) {
 	fmt.Println(max)
 }
 func once() {
+
 	fmt.Println("execute ...")
 }
 
