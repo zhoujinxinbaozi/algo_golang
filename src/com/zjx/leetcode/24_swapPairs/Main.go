@@ -1,7 +1,12 @@
 package main
 
 import "fmt"
+/**
+	problem:
+	给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
+	solution:
 
+ */
 func main() {
 	l1 := &ListNode{Val:1,}
 	l2 := &ListNode{Val:2,}
