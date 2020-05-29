@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"time"
 )
 
@@ -10,17 +11,26 @@ import (
  * @Date: 2020/5/29 11:15
  */
 
+type Demo struct {
+	ID   int
+	Name string
+}
+
 func main() {
 	// init
-	var arrInt []int
+	var arrInt []*Demo
 
 	maxCnt := 16
 	cnt := 0
 	for i := 0; i < maxCnt; i++ {
-		arrInt = append(arrInt, i)
+		demo := &Demo{
+			ID:   i,
+			Name: strconv.Itoa(i),
+		}
+		arrInt = append(arrInt, demo)
 	}
 
-	ch := make(chan int, 5)
+	ch := make(chan *Demo, 5)
 
 	// produce
 	go func() {
@@ -38,7 +48,7 @@ func main() {
 					break
 				}
 				cnt += 1
-				fmt.Println(value)
+				change(value)
 			}
 		}()
 	}
@@ -47,4 +57,10 @@ func main() {
 		time.Sleep(time.Millisecond * 10)
 	}
 	close(ch)
+	fmt.Println(arrInt)
+}
+
+func change(d *Demo) {
+	d.Name = d.Name + "???"
+	fmt.Println(d.Name)
 }
