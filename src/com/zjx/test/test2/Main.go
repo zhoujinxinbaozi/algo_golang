@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"sync"
 	"time"
 )
 
@@ -19,6 +20,7 @@ type Demo struct {
 func main() {
 	// init
 	var arrInt []*Demo
+	mutex := sync.Mutex{}
 
 	maxCnt := 16
 	cnt := 0
@@ -47,7 +49,9 @@ func main() {
 				if !ok {
 					break
 				}
+				mutex.Lock()
 				cnt += 1
+				mutex.Unlock()
 				change(value)
 			}
 		}()
