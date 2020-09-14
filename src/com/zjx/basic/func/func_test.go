@@ -28,8 +28,8 @@ func Execute(option option, a, b int) int {
 
 // TestFunc
 func TestFunc(t *testing.T) {
-	fmt.Println(Execute(add,1,2))
-	fmt.Println(Execute(sub,1,2))
+	fmt.Println(Execute(add, 1, 2))
+	fmt.Println(Execute(sub, 1, 2))
 }
 
 // No2NameMap 学号和名字的映射关系
@@ -43,7 +43,7 @@ type nameSlice []string
 // TestTypeMapSlice 测试map slice
 func TestTypeMapSlice(t *testing.T) {
 	var m No2NameMap
-	m = make(No2NameMap,1)
+	m = make(No2NameMap, 1)
 	m["1"] = "周金鑫"
 	for i, v := range m {
 		fmt.Println(i)
