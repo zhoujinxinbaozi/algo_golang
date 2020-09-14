@@ -21,7 +21,7 @@ func sub(a, b int) int {
 // option
 type option func(int, int) int
 
-// execute
+// Execute 执行方法
 func Execute(option option, a, b int) int {
 	return option(a, b)
 }
