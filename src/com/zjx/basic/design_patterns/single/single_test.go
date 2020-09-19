@@ -25,16 +25,19 @@ type Instance struct {
 }
 
 
+
+var mutex sync.Mutex
+
 var instance *Instance
 
 // GetSingleInstance 获取单例
 func GetSingleInstance() *Instance {
-	var mutex sync.Mutex
 	if instance == nil {
 		mutex.Lock()
 		if instance == nil {
 			instance = &Instance{}
 		}
+		mutex.Unlock()
 	}
 	return instance
 }
