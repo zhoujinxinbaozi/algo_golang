@@ -1,8 +1,11 @@
-package time
+/**
+ *  @Author: JinxinZhou
+ *  @Date  : 2020/9/22 3:17 下午
+ */
+
+package util
 
 import (
-	"fmt"
-	"testing"
 	"time"
 )
 
@@ -31,14 +34,21 @@ func DiffDayByUnix(lessUnix, moreUnix int64) int32 {
 	return int32(difference/daySeconds + 1)
 }
 
-func TestDiffDayByUnix(t *testing.T) {
-	startTime := "2016-09-10 13:00:00"
-	endTime := "2016-09-11 13:01:00"
+// CalTimeConsuming 计算耗时
+// @param startTime 函数起始时间
+// @return 耗时
+func CalTimeConsuming(startTime time.Time) time.Duration {
+	timeConsuming := time.Since(startTime)
+	return timeConsuming
+}
 
-	t1, _ := time.ParseInLocation("2006-01-02 15:04:05", startTime, time.Local)
-	t2, _ := time.ParseInLocation("2006-01-02 15:04:05", endTime, time.Local)
-	lessTime := t1.Unix()
-	moreTime := t2.Unix()
-
-	fmt.Println(DiffDayByUnix(lessTime, moreTime))
+// CalTimeCost 计算耗时
+// @param nil
+// @return 耗时
+func CalTimeCost() func() time.Duration {
+	start := time.Now()
+	return func() time.Duration{
+		tc:=time.Since(start)
+		return tc
+	}
 }
