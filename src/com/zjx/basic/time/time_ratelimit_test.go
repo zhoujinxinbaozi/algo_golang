@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"go.uber.org/ratelimit"
 	"testing"
+	"time"
 )
 
 // TestRateLimit
@@ -18,6 +19,6 @@ func TestRateLimit(t *testing.T) {
 	for {
 		// block take
 		limit.Take()
-		fmt.Println(1)
+		fmt.Println(time.Now())
 	}
 }
