@@ -55,3 +55,14 @@ func TestTypeMapSlice(t *testing.T) {
 	nameList = append(nameList, "yyl")
 	fmt.Println(nameList)
 }
+
+type S struct {
+	Method func(i, j int) int
+}
+
+func TestMethod(t *testing.T) {
+	s := S{
+		Method: add,
+	}
+	fmt.Println(s.Method(1, 2))
+}
