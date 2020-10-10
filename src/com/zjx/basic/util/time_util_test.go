@@ -19,6 +19,12 @@ func TestDiffDayByUnix(t *testing.T) {
 
 	t1, _ := time.ParseInLocation("2006-01-02 15:04:05", startTime, time.Local)
 	t2, _ := time.ParseInLocation("2006-01-02 15:04:05", endTime, time.Local)
+	tt, _ := time.ParseInLocation("2006-01-02 15:04:05", startTime, time.Local)
+	ttt, _ := time.Parse("2006-01-02 15:04:05", startTime)
+	fmt.Println(tt.Unix())
+	fmt.Println(ttt.Unix())
+
+
 	lessTime := t1.Unix()
 	moreTime := t2.Unix()
 
