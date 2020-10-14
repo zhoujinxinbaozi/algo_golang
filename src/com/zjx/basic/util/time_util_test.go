@@ -44,7 +44,7 @@ func TestCalTimeCost(t *testing.T) {
 
 	tcFunc := CalTimeCost()
 	defer func() {
-		fmt.Println(tcFunc())
+		fmt.Println("qqq",tcFunc())
 	}()
 
 	time.Sleep(time.Duration(1) * time.Second)
