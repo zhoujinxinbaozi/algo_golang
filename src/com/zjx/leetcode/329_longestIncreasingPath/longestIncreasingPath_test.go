@@ -4,7 +4,7 @@
  */
 /**
 测试不通过
- */
+*/
 package _29_longestIncreasingPath
 
 import (
@@ -21,26 +21,30 @@ func TestLongestIncreasingPath(t *testing.T) {
 	fmt.Println(longestIncreasingPath(nums))
 }
 
-type Node struct {
-	I int
-	J int
-}
-
 var result int
 var tmp []int
-var markNodes []*Node
+var markSlice [][]int
 
 func longestIncreasingPath(matrix [][]int) int {
 	result = 0
 	tmp = nil
+	markSlice = nil
 
 	if matrix == nil {
 		return result
 	}
 
+	// mark is not visit
+	for _, arr := range matrix {
+		var tmp []int
+		for i := 0; i < len(arr); i++ {
+			tmp = append(tmp, 0)
+		}
+		markSlice = append(markSlice, tmp)
+	}
+
 	for i := 0; i < len(matrix); i++ {
 		for j := 0; j < len(matrix[0]); j++ {
-			markNodes = nil
 			dfs(matrix, i, j)
 		}
 	}
@@ -52,72 +56,44 @@ func dfs(matrix [][]int, i, j int) {
 	row := len(matrix)
 	col := len(matrix[0])
 
-	if !isLegal(i, j, row, col) {
-		return
-	}
-
 	tmp = append(tmp, matrix[i][j])
+	markSlice[i][j] = -1 // mark is visit
 
 	var canThrough bool
 
-	if !isThrough(i, j) {
-		markNodes = append(markNodes, &Node{
-			I: i,
-			J: j,
-		})
-	}
-
-	if isLegal(i-1, j, row, col) && !isThrough(i-1, j) && matrix[i-1][j] > tmp[len(tmp)-1] {
-		canThrough = true
-		markNodes = append(markNodes, &Node{
-			I: i - 1,
-			J: j,
-		})
+	// left
+	if isLegal(i-1, j, row, col) && markSlice[i-1][j] == 0 && matrix[i-1][j] > tmp[len(tmp)-1] {
 		dfs(matrix, i-1, j)
+		markSlice[i][j] = 0
 	}
 
-	if isLegal(i+1, j, row, col) && !isThrough(i+1, j) && matrix[i+1][j] > tmp[len(tmp)-1] {
-		canThrough = true
-		markNodes = append(markNodes, &Node{
-			I: i + 1,
-			J: j,
-		})
+	// right
+	if isLegal(i+1, j, row, col) && markSlice[i+1][j] == 0 && matrix[i+1][j] > tmp[len(tmp)-1] {
 		dfs(matrix, i+1, j)
+		markSlice[i][j] = 0
+		canThrough = true
 	}
 
-	if isLegal(i, j-1, row, col) && !isThrough(i, j-1) && matrix[i][j-1] > tmp[len(tmp)-1] {
-		canThrough = true
-		markNodes = append(markNodes, &Node{
-			I: i,
-			J: j - 1,
-		})
+	// up
+	if isLegal(i, j-1, row, col) && markSlice[i][j-1] == 0 && matrix[i][j-1] > tmp[len(tmp)-1] {
 		dfs(matrix, i, j-1)
+		markSlice[i][j] = 0
+		canThrough = true
 	}
 
-	if isLegal(i, j+1, row, col) && !isThrough(i, j+1) && matrix[i][j+1] > tmp[len(tmp)-1] {
-		canThrough = true
-		markNodes = append(markNodes, &Node{
-			I: i,
-			J: j + 1,
-		})
+	// down
+	if isLegal(i, j+1, row, col) && markSlice[i][j+1] == 0 && matrix[i][j+1] > tmp[len(tmp)-1] {
 		dfs(matrix, i, j+1)
+		markSlice[i][j] = 0
+		canThrough = true
 	}
 
 	if !canThrough {
-		fmt.Println(tmp)
 		result = max(tmp)
 	}
 
+	markSlice[i][j] = 0
 	tmp = tmp[:len(tmp)-1]
-}
-
-func isThrough(i, j int) bool {
-	for _, node := range markNodes {
-		if node.I == i && node.J == j {
-			return true
-		}
-	}
-	return false
 }
 
 func max(tmp []int) int {
