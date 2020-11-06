@@ -35,3 +35,4 @@ func validMountainArray(A []int) bool {
 	}
 	return result
 }
+
