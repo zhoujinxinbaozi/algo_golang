@@ -14,6 +14,7 @@ import (
 func TestChan(t *testing.T) {
 	var chanList []chan interface{}
 	chanList = make([]chan interface{}, 0, 5)
+
 	go func() {
 		var c chan interface{}
 		c = make(chan interface{}, 1)
@@ -28,6 +29,7 @@ func TestChan(t *testing.T) {
 
 	time.Sleep(time.Duration(100) * time.Millisecond)
 	fmt.Println("==========", len(chanList), "==========")
+
 	go func() {
 		for _, v := range chanList {
 			go func() {
@@ -38,7 +40,6 @@ func TestChan(t *testing.T) {
 					}
 				}
 			}()
-
 		}
 	}()
 
