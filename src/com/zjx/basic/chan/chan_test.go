@@ -32,10 +32,11 @@ func TestChan(t *testing.T) {
 
 	go func() {
 		for _, v := range chanList {
+			tmp := v
 			go func() {
 				for {
 					select {
-					case vv := <-v:
+					case vv := <-tmp:
 						fmt.Println(vv)
 					}
 				}
