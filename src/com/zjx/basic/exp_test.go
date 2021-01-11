@@ -25,7 +25,7 @@ func TestExp(t *testing.T) {
 	}
 
 	hashArr := hashArr(lines)
-	lines = readFile("/Users/zhoujinxin/Desktop/part-00000")
+	lines = readFile("/Users/zhoujinxin/Desktop/cuid2")
 	cuid2hashMap := converMap(lines)
 	judge(hashArr, cuid2hashMap)
 }
@@ -60,7 +60,7 @@ func converMap(lines []string) map[string]string {
 func hashArr(lines []string) []string{
 	var result []string
 	for _, v := range lines {
-		if strings.Index(v, "6924_13401") != -1 { //
+		if strings.Index(v, "7148_14351") != -1 {
 			result = append(result, strings.Split(v,"\t")[0])
 		}
 	}
@@ -86,3 +86,4 @@ func readFile(filePath string) []string {
 	}
 	return result
 }
+

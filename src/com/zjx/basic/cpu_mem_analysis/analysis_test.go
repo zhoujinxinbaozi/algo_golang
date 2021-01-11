@@ -45,3 +45,22 @@ func deadCircle1() {
 		}
 	}
 }
+
+func TestMap(t *testing.T) {
+	m := make(map[int]int)
+	if v, ok := m[1]; ok {
+		m[1] = v + 1
+	} else {
+		m[1]++
+		fmt.Println("v : ", v)
+	}
+	fmt.Println(m)
+}
+
+func TestSlice(t *testing.T) {
+	var s []int
+	s = append(s, 1)
+	s = append(s, 2)
+	s = append(s, 3)
+	fmt.Println(s[:len(s)])
+}
