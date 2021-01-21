@@ -1,9 +1,10 @@
 package main
 
 import (
-	"com/zjx/basic/log/logEntity"
 	"fmt"
 	"time"
+
+	"com/zjx/algo_golang/src/com/zjx/basic/log/logEntity"
 )
 
 func main() {
