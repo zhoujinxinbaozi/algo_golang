@@ -6,9 +6,11 @@
 package bytes_convert
 
 import (
+	"bytes"
 	"fmt"
 	"math"
 	"strconv"
+	"strings"
 	"testing"
 )
 
@@ -112,4 +114,27 @@ func convertToBin(n int, bin int) string {
 		b = convertToBin(int(n+1), bin)
 	}
 	return b
+}
+
+// TestBytes1
+func TestBytes1(t *testing.T) {
+	buf := bytes.Buffer{}
+	buf.WriteString("1")
+	buf.WriteByte(' ')
+	buf.WriteString("2")
+	buf.WriteByte(' ')
+	buf.WriteString("3")
+	buf.WriteByte(' ')
+
+	fmt.Println(buf.String())
+
+	var builder strings.Builder
+	builder.WriteString("1")
+	builder.WriteByte(' ')
+	builder.WriteString("2")
+	builder.WriteByte(' ')
+	builder.WriteString("3")
+	builder.WriteByte(' ')
+
+	fmt.Println(builder.String())
 }
