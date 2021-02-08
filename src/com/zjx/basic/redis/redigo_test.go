@@ -1,4 +1,4 @@
-package main
+package redis
 
 /**
  * @Auther: zhoujinxin@bytedance.com
@@ -7,11 +7,12 @@ package main
 
 import (
 	"fmt"
+	"testing"
 
 	"github.com/garyburd/redigo/redis"
 )
 
-func main() {
+func TestDigo(t *testing.T) {
 	c, err := redis.Dial("tcp", "127.0.0.1:6379")
 	if err != nil {
 		fmt.Println("Connect to redis error", err)
