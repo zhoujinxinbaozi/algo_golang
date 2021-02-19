@@ -1,8 +1,9 @@
-package main
+package lock
 
 import (
 	"fmt"
 	"sync"
+	"testing"
 )
 
 // 互斥锁
@@ -14,7 +15,7 @@ var lock sync.Mutex
 var lock1 sync.RWMutex
 var count = 0
 var wg sync.WaitGroup
-func main() {
+func TestLock(t *testing.T) {
 
 	wg.Add(2)
 	go f1()
