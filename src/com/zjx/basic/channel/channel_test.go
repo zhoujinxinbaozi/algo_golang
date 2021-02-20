@@ -74,3 +74,22 @@ func readChan(ch <-chan int) {
 		fmt.Println(v)
 	}
 }
+
+// TestChannel2 使用channel计算100个1相加 无锁化
+func TestChannel2(t *testing.T) {
+	cur := time.Now()
+	ch := make(chan int, 10)
+	go func() {
+		for i := 0; i < 10000; i++ {
+			ch <- 1
+		}
+		close(ch)
+	}()
+
+	var count int
+	for v := range ch {
+		count += v
+	}
+	fmt.Println(time.Now().Sub(cur).Microseconds())
+	fmt.Println(count)
+}
