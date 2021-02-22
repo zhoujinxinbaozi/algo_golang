@@ -18,15 +18,18 @@ solution:
 attention：
 	退出条件为 两个链表都为空，并且进位为0
 */
+// main
 func main() {
 
 }
 
+// ListNode
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
+// addTwoNumbers 两个链表进行相加
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	dummy := &ListNode{
 		Val:  0,

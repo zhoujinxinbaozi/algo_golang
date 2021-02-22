@@ -18,10 +18,13 @@ solution:
 	用map存储，key为数组的值，value为数组的下表
 	遍历数组时，当前值为current，就在map中查找时候有target-current，有则返回
 */
+
+// main
 func main() {
 	fmt.Println(twoSum([]int{3, 2, 3}, 6))
 }
 
+// towSum
 func twoSum(nums []int, target int) []int {
 	var m map[int]int // 存储  key=nums[i] value=i
 	m = make(map[int]int, len(nums))
