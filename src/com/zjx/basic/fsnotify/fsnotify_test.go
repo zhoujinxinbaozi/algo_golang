@@ -2,8 +2,9 @@ package fsnotify
 
 import (
 	"fmt"
-	"github.com/fsnotify/fsnotify"
 	"testing"
+
+	"github.com/fsnotify/fsnotify"
 )
 
 // TestFsNotify fsnotify 测试
@@ -49,4 +50,19 @@ func MonitorObject(watcher *fsnotify.Watcher) {
 			return
 		}
 	}
+}
+
+type Op int32
+
+const (
+	W = iota + 1
+	WW
+	WWW
+)
+
+// TestIota
+func TestIota(t *testing.T) {
+	fmt.Printf("%T, %v\n", W, W)
+	fmt.Println(WW)
+	fmt.Println(WWW)
 }

@@ -5,6 +5,12 @@
 
 package interview
 
+import (
+	"fmt"
+	"strconv"
+	"testing"
+)
+
 // isMirTree 是否是镜像二叉树
 func isMirTree(root *Tree) bool {
 	if root == nil {
@@ -32,4 +38,9 @@ func treeMir(root *Tree) *Tree {
 	}
 	root.l, root.r = treeMir(root.r), treeMir(root.l)
 	return root
+}
+
+func TestSprintf(t *testing.T) {
+	s := fmt.Sprintf("%5s", strconv.Itoa(12))
+	fmt.Println(s)
 }
