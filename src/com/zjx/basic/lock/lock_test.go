@@ -2,9 +2,12 @@ package lock
 
 import (
 	"fmt"
+	"strings"
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/robfig/cron"
 )
 
 // 互斥锁
@@ -60,4 +63,44 @@ func f1() {
 		count += 1
 	}
 	lock.Unlock()
+}
+
+// TestTimeLocker
+func TestTimeLocker(t *testing.T) {
+	timeLocker := NewTimeLocker()
+	fmt.Printf("begin : %v, end : %v\n", timeLocker.begin, timeLocker.end)
+	timeLocker.LockAfter(time.Now().Unix(), 30)
+	fmt.Printf("begin : %v, end : %v\n", timeLocker.begin, timeLocker.end)
+
+	time.Sleep(time.Duration(1) * time.Second)
+
+	timeLocker.LockAfter(time.Now().Unix(), 30)
+	fmt.Printf("begin : %v, end : %v\n", timeLocker.begin, timeLocker.end)
+}
+
+// TestSplit
+func TestSplit(t *testing.T) {
+	str := "1	2			3"
+	arr := strings.Split(str, "\t")
+	fmt.Println("len = ", len(arr), " arr = ", arr)
+}
+
+// TestTime
+func TestTime(t *testing.T) {
+	now := time.Now().Format("20060102")
+	nowLocal := time.Now().Local().Format("20060102")
+	fmt.Println("now : ", now)
+	fmt.Println("nowLocal : ", nowLocal)
+	fmt.Println(time.Now().Unix())
+}
+
+// ScheduledDelete
+func TestScheduledDelete(t *testing.T) {
+	c := cron.New()
+	spec := "00 29 16 * * ?"
+	c.AddFunc(spec, func() {
+		fmt.Println("123")
+	})
+	c.Start()
+	select{}
 }
