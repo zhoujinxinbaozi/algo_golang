@@ -45,3 +45,16 @@ func QuanPaiLie(arr []int, cur int) {
 		arr[i], arr[cur] = arr[cur], arr[i]
 	}
 }
+
+// 递归获取数组的总和
+func TestArr(t *testing.T) {
+	arr := []int{1, 3, 5, 7, 9}
+	fmt.Println(calculate(arr))
+}
+
+func calculate(arr []int) int {
+	if len(arr) == 0 {
+		return 0
+	}
+	return arr[0] + calculate(arr[1:])
+}

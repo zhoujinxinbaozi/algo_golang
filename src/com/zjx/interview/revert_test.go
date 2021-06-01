@@ -1,8 +1,11 @@
-package main
+package interview
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
-func main() {
+func TestRevert(t *testing.T) {
 	head := init1()
 	printf(*head,"before revert", "before revert")
 	head = revert(head)
