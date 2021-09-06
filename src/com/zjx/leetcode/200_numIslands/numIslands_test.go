@@ -45,7 +45,7 @@ func numIslands(grid [][]byte) int {
 	}
 	return result
 }
-
+// 深度优先 将是1 所有相邻的都设置为0   结果为有多少次深度遍历就有多少个岛屿
 func dfs(grid [][]byte, x, y int) {
 	raw := len(grid)
 	col := len(grid[0])

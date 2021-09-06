@@ -27,13 +27,12 @@ solution:
 	当前位置为i， 下一个元素为j，数组的末尾元素为k
 	if nums[i] + nums[j] + nums[k] > 0  k --
 	else if                        < 0  j ++
-	else                                加入到结果集中
+	else                                加入到结果集中 k-- j++
 	去重
 
 */
 func main() {
 	fmt.Println(threeSum([]int{-1, 0, 1, 2, -1, -4}))
-
 }
 
 func threeSum(nums []int) [][]int {

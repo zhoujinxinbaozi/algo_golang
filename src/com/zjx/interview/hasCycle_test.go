@@ -16,7 +16,7 @@ type ListNode struct {
 }
 
 // hasCycle 判断链表是否有环
-// 慢指针走一步  快指针走一步
+// 慢指针走一步  快指针走二步
 func hasCycle(head *ListNode) bool {
 	if head != nil {
 		slow, fast := head, head

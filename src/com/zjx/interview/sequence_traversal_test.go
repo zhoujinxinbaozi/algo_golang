@@ -8,42 +8,42 @@
  */
 package interview
 
-import "fmt"
+import "math"
 
-// Tree
-type Tree struct {
-	v int
-	l *Tree
-	r *Tree
-}
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
 
-// sequenceTraversal 层序遍历 按行进行打印
-func sequenceTraversal(root *Tree) {
+// 层序遍历 获取每一层的最大值
+func largestValues(root *TreeNode) []int {
 	if root == nil {
-		return
+		return nil
 	}
+	var resultList []int
+	var queue []*TreeNode
+	queue = append(queue, root)
 
-	var nodeList []*Tree
-	nodeList = append(nodeList, root)
-
-	mark := root
-
-	for len(nodeList) != 0 {
-		tmp := nodeList[0]
-		fmt.Print(tmp.v, "\t")
-		var cur *Tree
-		if tmp.l != nil {
-			nodeList = append(nodeList, tmp.l)
-			cur = tmp.l
+	for len(queue) != 0 {
+		tmpQueue := queue
+		queue = []*TreeNode{}
+		result := math.MinInt32
+		for len(tmpQueue) != 0 {
+			node := tmpQueue[0]
+			result = max(result, node.value)
+			if node.left != nil {
+				queue = append(queue, node.left)
+			}
+			if node.right != nil {
+				queue = append(queue, node.right)
+			}
+			tmpQueue = tmpQueue[1:]
 		}
-		if tmp.r != nil {
-			nodeList = append(nodeList, tmp.r)
-			cur = tmp.r
-		}
-		if tmp == mark {
-			fmt.Println()
-			mark = cur
-		}
-		nodeList = nodeList[1:]
+		resultList = append(resultList, result)
 	}
+	return resultList
 }

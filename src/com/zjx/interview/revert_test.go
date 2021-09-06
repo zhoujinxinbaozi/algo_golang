@@ -13,7 +13,7 @@ func TestRevert(t *testing.T) {
 }
 
 func revert(head *Node) *Node {
-	dunmmy := Node{
+	dunmmy := &Node{
 		value: -1,
 	}
 	dunmmy.next = head

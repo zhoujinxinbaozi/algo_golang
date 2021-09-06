@@ -16,7 +16,6 @@ func permute(nums []int) [][]int {
 
 func solution(nums []int, result *[][]int, length int, current int) {
 	if current == length {
-
 		tmp := make([]int, len(nums))
 		copy(tmp, nums)
 		*result = append(*result, tmp)
