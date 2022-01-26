@@ -7,6 +7,7 @@ package poll
 
 import (
 	"fmt"
+	"github.com/stretchr/testify/assert"
 	"sync"
 	"testing"
 )
@@ -30,14 +31,15 @@ func initPool() {
 func TestPoll(t *testing.T) {
 	initPool()
 
-	p := pool.Get().(*Person)
-	fmt.Println("首次从 pool 里获取：", p)
+	p := pool.Get().(*Person) // 池子里没有对象 创建新的对象
+	assert.Equal(t, "", p.Name)
 
-	p.Name = "first"
-	fmt.Printf("设置 p.Name = %s\n", p.Name)
+	p.Name = "zhoujinxin"
+	pool.Put(p) // 池子里有一个对象
 
-	pool.Put(p)
+	p = pool.Get().(*Person) // 取出来直接用
+	assert.Equal(t, "zhoujinxin", p.Name)
 
-	fmt.Println("Pool 里已有一个对象：&{first}，调用 Get: ", pool.Get().(*Person))
-	fmt.Println("Pool 没有对象了，调用 Get: ", pool.Get().(*Person))
+	p = pool.Get().(*Person) // 池子里没有对象 创建新的对象
+	assert.Equal(t, "", p.Name)
 }
