@@ -3,7 +3,6 @@ module com/zjx/algo_golang
 go 1.15
 
 require (
-	github.com/aviddiviner/go-murmur v0.0.0-20150519214947-b9740d71e571
 	github.com/creasty/defaults v1.5.1
 	github.com/fsnotify/fsnotify v1.4.9
 	github.com/garyburd/redigo v1.6.2
@@ -16,6 +15,7 @@ require (
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/onsi/ginkgo v1.15.0 // indirect
 	github.com/onsi/gomega v1.10.5 // indirect
+	github.com/panjf2000/ants/v2 v2.4.7
 	github.com/robfig/cron v1.2.0
 	github.com/stretchr/testify v1.7.0
 	go.uber.org/atomic v1.7.0 // indirect
