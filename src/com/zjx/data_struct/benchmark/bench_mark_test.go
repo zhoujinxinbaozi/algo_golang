@@ -5,7 +5,9 @@
 
 package benchmark
 
-import "testing"
+import (
+	"testing"
+)
 
 // go test -v ./src/com/zjx/data_struct/benchmark -bench=.
 
