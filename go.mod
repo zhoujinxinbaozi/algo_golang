@@ -3,6 +3,7 @@ module com/zjx/algo_golang
 go 1.15
 
 require (
+	bou.ke/monkey v1.0.2
 	github.com/creasty/defaults v1.5.1
 	github.com/fsnotify/fsnotify v1.4.9
 	github.com/garyburd/redigo v1.6.2
