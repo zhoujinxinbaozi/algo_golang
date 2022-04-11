@@ -24,6 +24,7 @@ type Entity struct {
 	Age int8
 }
 
+//go:noinline  添加上这个注释 就可以不用-gcflag参数
 func (e *Entity) GetAge() int8 {
 	return 0
 }
