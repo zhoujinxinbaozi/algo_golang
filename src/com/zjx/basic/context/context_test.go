@@ -40,7 +40,7 @@ func Watch(ctx context.Context, str int) {
 // TestContextWithValue
 func TestContextWithValue(t *testing.T) {
 	name := "name"
-	val  := "value"
+	val := "value"
 	ctx := context.WithValue(context.Background(), name, val)
 	GetValue(ctx, name)
 	time.Sleep(1 * time.Second)
@@ -51,4 +51,3 @@ func GetValue(ctx context.Context, key string) {
 	fmt.Println(ctx.Deadline())
 	fmt.Println(ctx.Value(key))
 }
-
